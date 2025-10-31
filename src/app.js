@@ -18,7 +18,13 @@ const dominioGenerator = () =>{
     for(let a of adj){
       for(let no of noun){
         for(let dom of domains){
-          dominioFinal.push(`${pro}${a}${no}.${dom}`);
+          let baseDominio = (`${pro}${a}${no}`);
+
+          if(no.endsWith(dom)){
+            baseDominio = baseDominio.slice(0, -dom.length);
+            //console.log(`-------------`, aux)
+          }
+          dominioFinal.push(`${baseDominio}.${dom}`)
         }
       }
     }
@@ -32,7 +38,7 @@ console.log(dominioGenerator())
 
 
 window.onload = function () {
-
+  dominioGenerator();
 };
 
 
