@@ -6,31 +6,30 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 
-let pronoun = ['the', 'our'];
-let adj = ['great', 'big'];
-let noun = ['camiones', 'capcom', 'midu', 'griterio', 'internet'];
-let domains = ['com', 'es', 'dev', 'io', 'net']
+const pronoun = ['the', 'our'];
+const adj = ['great', 'big'];
+const noun = ['camiones', 'capcom', 'midu', 'griterio', 'internet'];
+const domains = ['com', 'es', 'dev', 'io', 'net']
 
 
-const dominioGenerator = () =>{
-  let dominioFinal =[]
-  for(let pro of pronoun){
-    for(let a of adj){
-      for(let no of noun){
-        for(let dom of domains){
-          let baseDominio = (`${pro}${a}${no}`);
+const dominioGenerator = () => {
+  let finalDomain = []
+  for (let pronouns of pronoun) {
+    for (let adjetive of adj) {
+      for (let nouns of noun) {
+        for (let domain of domains) {
+          let baseDomain = (`${pronouns}${adjetive}${nouns}`);
 
-          if(no.endsWith(dom)){
-            baseDominio = baseDominio.slice(0, -dom.length);
-            //console.log(`-------------`, aux)
+          if (nouns.endsWith(domain)) {
+            baseDomain = baseDomain.slice(0, -domain.length);
           }
-          dominioFinal.push(`${baseDominio}.${dom}`)
+          finalDomain.push(`${baseDomain}.${domain}`)
         }
       }
     }
   }
 
-  return dominioFinal;
+  return finalDomain;
 }
 
 console.log(dominioGenerator())
